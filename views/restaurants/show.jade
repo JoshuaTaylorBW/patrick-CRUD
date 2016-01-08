@@ -1,0 +1,15 @@
+extends ../layout
+
+block content
+  if restaurant
+    div.well.well-lg
+      h1= restaurant.name
+      img(src='' + restaurant.image)
+      h3= restaurant.location
+      p= restaurant.state
+      p Rating: #{restaurant.rating}
+      p= restaurant.cuisine
+      p= restaurant.bio
+      a.btn-link(href='/restaurants/' + restaurant.name + '/edit') Edit
+      form(action='/restaurants/del/' + restaurant.name method='post')
+        input.btn.btn-link(type='submit' value='Delete')

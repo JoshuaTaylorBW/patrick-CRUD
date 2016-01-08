@@ -1,0 +1,143 @@
+extends ../layout
+
+block content
+    div.container
+        h1 Add a New Restaurant
+        form(action="/restaurants" method="post" id="addNew")
+            div.form-group
+                label(for="name") Name
+                input.form-control(type="text" id="name" name="name" placeholder="Name")
+            div.form-group
+                label(for="location") Location
+                input.form-control(type="text" id="location" name="location" placeholder="Location")
+            div.form-group
+                label(for="state") State
+                select(id="state" name="state")
+                    option(selected="true" disabled="true") Select A State
+                    option(value='AL') Alabama
+                    option(value='AK') Alaska
+                    option(value='AZ') Arizona
+                    option(value='AR') Arkansas
+                    option(value='CA') California
+                    option(value='CO') Colorado
+                    option(value='CT') Connecticut
+                    option(value='DE') Delaware
+                    option(value='DC') District Of Columbia
+                    option(value='FL') Florida
+                    option(value='GA') Georgia
+                    option(value='HI') Hawaii
+                    option(value='ID') Idaho
+                    option(value='IL') Illinois
+                    option(value='IN') Indiana
+                    option(value='IA') Iowa
+                    option(value='KS') Kansas
+                    option(value='KY') Kentucky
+                    option(value='LA') Louisiana
+                    option(value='ME') Maine
+                    option(value='MD') Maryland
+                    option(value='MA') Massachusetts
+                    option(value='MI') Michigan
+                    option(value='MN') Minnesota
+                    option(value='MS') Mississippi
+                    option(value='MO') Missouri
+                    option(value='MT') Montana
+                    option(value='NE') Nebraska
+                    option(value='NV') Nevada
+                    option(value='NH') New Hampshire
+                    option(value='NJ') New Jersey
+                    option(value='NM') New Mexico
+                    option(value='NY') New York
+                    option(value='NC') North Carolina
+                    option(value='ND') North Dakota
+                    option(value='OH') Ohio
+                    option(value='OK') Oklahoma
+                    option(value='OR') Oregon
+                    option(value='PA') Pennsylvania
+                    option(value='RI') Rhode Island
+                    option(value='SC') South Carolina
+                    option(value='SD') South Dakota
+                    option(value='TN') Tennessee
+                    option(value='TX') Texas
+                    option(value='UT') Utah
+                    option(value='VT') Vermont
+                    option(value='VA') Virginia
+                    option(value='WA') Washington
+                    option(value='WV') West Virginia
+                    option(value='WI') Wisconsin
+                    option(value='WY') Wyoming
+            div.form-group
+                label(for="cuisine") Cuisine
+                select(id="cuisine" name="cuisine")
+                    option(selected="true" disabled="true") Select A Cuisine
+                    option(value='African') African
+                    option(value='Albanian') Albanian
+                    option(value='Alcohol') Alcohol
+                    option(value='American') American
+                    option(value='Argentinian') Argentinian
+                    option(value='Asian') Asian
+                    option(value='Australian') Australian
+                    option(value='Austrian') Austrian
+                    option(value='Bagels') Bagels
+                    option(value='Bakery') Bakery
+                    option(value='Bar_Food') Bar Food
+                    option(value='BBQ') BBQ
+                    option(value='Belgian') Belgian
+                    option(value='Brazilian') Brazilian
+                    option(value='Breakfast') Breakfast
+                    option(value='British') British
+                    option(value='Burmese') Burmese
+                    option(value='Cajun') Cajun
+                    option(value='Californian') Californian
+                    option(value='Calzones') Calzones
+                    option(value='Cambodian') Cambodian
+                    option(value='Cantonese') Cantonese
+                    option(value='Caribbean') Caribbean
+                    option(value='Cheesesteaks') Cheesesteaks
+                    option(value='Chicken') Chicken
+                    option(value='Chili') Chili
+                    option(value='Chinese') Chinese
+                    option(value='Classic') Classic
+                    option(value='Coffee_and_Tea') Coffee and Tea
+                    option(value='Colombian') Colombian
+                    option(value='Costa_Rican') Costa Rican
+                    option(value='Crepes') Crepes
+                    option(value='Cuban') Cuban
+                    option(value='Deli') Deli
+                    option(value='Dessert') Dessert
+                    option(value='Dim_Sum') Dim Sum
+                    option(value='Diner') Diner
+                    option(value='Dinner') Dinner
+                    option(value='Dominican') Dominican
+                    option(value='Eclectic') Eclectic
+                    option(value='Ecuadorian') Ecuadorian
+                    option(value='Egyptian') Egyptian
+                    option(value='El_Salvadoran') El Salvadoran
+                    option(value='Empanadas') Empanadas
+                    option(value='English') English
+                    option(value='Ethiopian') Ethiopian
+                    option(value='Filipino') Filipino
+                    option(value='Fine_Dining') Fine Dining
+                    option(value='French') French
+                    option(value='Fresh_Fruits') Fresh Fruits
+                    option(value='Korean') Korean
+                    option(value='Mexican') Mexican
+                    option(value='Thai') Thai
+                    option(value='Russian') Russian
+                    option(value='Indian') Indian
+            div.form-group
+                label Rate This Restaurant:
+            div.form-group
+                p From Ugh! ---> Oh Yea!
+                input(type="radio" name="rating" value="1" checked)
+                input(type="radio" name="rating" value="2")
+                input(type="radio" name="rating" value="3")
+                input(type="radio" name="rating" value="4")
+                input(type="radio" name="rating" value="5")
+            div.form-group
+                label(for="image") Image Url:
+                input(type="text" name="image" id="image" placeholder="Image URL")
+            div.form-group
+                textarea.form-control(rows="5" id='bio' name='bio' placeholder="Short Bio")
+            button.btn.btn-primary(type="submit" id="addKnopf") Submit
+    script(src="https://code.jquery.com/jquery-2.1.4.min.js")
+    script(src="/js/addformcontrol.js")

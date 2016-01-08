@@ -1,0 +1,142 @@
+extends ../layout
+
+block content
+
+    div.container
+        if restaurant
+            - var name = restaurant.name
+            h1 Editing #{restaurant.name}
+            form(action="/restaurants/" + name method="post" id="editForm")
+                div.form-group
+                    label(for="name") Name
+                    input.form-control(type="text" id="name" name="name"  value=restaurant.name)
+                div.form-group
+                    label(for="image") Image URL
+                    input.form-control(type="text" id="image" name="image"  value=restaurant.image)
+                div.form-group
+                    label(for="location") Location
+                    input.form-control(type="text" id="location" name="location" value=restaurant.location)
+                div.form-group
+                    label(for="state") State
+                    select(id="state" name="state")
+                        option(value='AL' selected=(restaurant ? (restaurant.state === 'AL' ? true : undefined): undefined)) Alabama
+                        option(value='AK' selected=(restaurant ? (restaurant.state === 'AK' ? true : undefined): undefined)) Alaska
+                        option(value='AZ' selected=(restaurant ? (restaurant.state === 'AZ' ? true : undefined): undefined)) Arizona
+                        option(value='AR' selected=(restaurant ? (restaurant.state === 'AR' ? true : undefined): undefined)) Arkansas
+                        option(value='CA' selected=(restaurant ? (restaurant.state === 'CA' ? true : undefined): undefined)) California
+                        option(value='CO' selected=(restaurant ? (restaurant.state === 'CO' ? true : undefined): undefined)) Colorado
+                        option(value='CT' selected=(restaurant ? (restaurant.state === 'CT' ? true : undefined): undefined)) Connecticut
+                        option(value='DE' selected=(restaurant ? (restaurant.state === 'DE' ? true : undefined): undefined)) Delaware
+                        option(value='DC' selected=(restaurant ? (restaurant.state === 'DC' ? true : undefined): undefined)) District Of Columbia
+                        option(value='FL' selected=(restaurant ? (restaurant.state === 'FL' ? true : undefined): undefined)) Florida
+                        option(value='GA' selected=(restaurant ? (restaurant.state === 'GA' ? true : undefined): undefined)) Georgia
+                        option(value='HI' selected=(restaurant ? (restaurant.state === 'HI' ? true : undefined): undefined)) Hawaii
+                        option(value='ID' selected=(restaurant ? (restaurant.state === 'ID' ? true : undefined): undefined)) Idaho
+                        option(value='IL' selected=(restaurant ? (restaurant.state === 'IL' ? true : undefined): undefined)) Illinois
+                        option(value='IN' selected=(restaurant ? (restaurant.state === 'IN' ? true : undefined): undefined)) Indiana
+                        option(value='IA' selected=(restaurant ? (restaurant.state === 'IA' ? true : undefined): undefined)) Iowa
+                        option(value='KS' selected=(restaurant ? (restaurant.state === 'KS' ? true : undefined): undefined)) Kansas
+                        option(value='KY' selected=(restaurant ? (restaurant.state === 'KY' ? true : undefined): undefined)) Kentucky
+                        option(value='LA' selected=(restaurant ? (restaurant.state === 'LA' ? true : undefined): undefined)) Louisiana
+                        option(value='ME' selected=(restaurant ? (restaurant.state === 'ME' ? true : undefined): undefined)) Maine
+                        option(value='MD' selected=(restaurant ? (restaurant.state === 'MD' ? true : undefined): undefined)) Maryland
+                        option(value='MA' selected=(restaurant ? (restaurant.state === 'MA' ? true : undefined): undefined)) Massachusetts
+                        option(value='MI' selected=(restaurant ? (restaurant.state === 'MI' ? true : undefined): undefined)) Michigan
+                        option(value='MN' selected=(restaurant ? (restaurant.state === 'MN' ? true : undefined): undefined)) Minnesota
+                        option(value='MS' selected=(restaurant ? (restaurant.state === 'MS' ? true : undefined): undefined)) Mississippi
+                        option(value='MO' selected=(restaurant ? (restaurant.state === 'MO' ? true : undefined): undefined)) Missouri
+                        option(value='MT' selected=(restaurant ? (restaurant.state === 'MT' ? true : undefined): undefined)) Montana
+                        option(value='NE' selected=(restaurant ? (restaurant.state === 'NE' ? true : undefined): undefined)) Nebraska
+                        option(value='NV' selected=(restaurant ? (restaurant.state === 'NV' ? true : undefined): undefined)) Nevada
+                        option(value='NH' selected=(restaurant ? (restaurant.state === 'NH' ? true : undefined): undefined)) New Hampshire
+                        option(value='NJ' selected=(restaurant ? (restaurant.state === 'NJ' ? true : undefined): undefined)) New Jersey
+                        option(value='NM' selected=(restaurant ? (restaurant.state === 'NM' ? true : undefined): undefined)) New Mexico
+                        option(value='NY' selected=(restaurant ? (restaurant.state === 'NY' ? true : undefined): undefined)) New York
+                        option(value='NC' selected=(restaurant ? (restaurant.state === 'NC' ? true : undefined): undefined)) North Carolina
+                        option(value='ND' selected=(restaurant ? (restaurant.state === 'ND' ? true : undefined): undefined)) North Dakota
+                        option(value='OH' selected=(restaurant ? (restaurant.state === 'OH' ? true : undefined): undefined)) Ohio
+                        option(value='OK' selected=(restaurant ? (restaurant.state === 'OK' ? true : undefined): undefined)) Oklahoma
+                        option(value='OR' selected=(restaurant ? (restaurant.state === 'OR' ? true : undefined): undefined)) Oregon
+                        option(value='PA' selected=(restaurant ? (restaurant.state === 'PA' ? true : undefined): undefined)) Pennsylvania
+                        option(value='RI' selected=(restaurant ? (restaurant.state === 'RI' ? true : undefined): undefined)) Rhode Island
+                        option(value='SC' selected=(restaurant ? (restaurant.state === 'SC' ? true : undefined): undefined)) South Carolina
+                        option(value='SD' selected=(restaurant ? (restaurant.state === 'SD' ? true : undefined): undefined)) South Dakota
+                        option(value='TN' selected=(restaurant ? (restaurant.state === 'TN' ? true : undefined): undefined)) Tennessee
+                        option(value='TX' selected=(restaurant ? (restaurant.state === 'TX' ? true : undefined): undefined)) Texas
+                        option(value='UT' selected=(restaurant ? (restaurant.state === 'UT' ? true : undefined): undefined)) Utah
+                        option(value='VT' selected=(restaurant ? (restaurant.state === 'VT' ? true : undefined): undefined)) Vermont
+                        option(value='VA' selected=(restaurant ? (restaurant.state === 'VA' ? true : undefined): undefined)) Virginia
+                        option(value='WA' selected=(restaurant ? (restaurant.state === 'WA' ? true : undefined): undefined)) Washington
+                        option(value='WV' selected=(restaurant ? (restaurant.state === 'WV' ? true : undefined): undefined)) West Virginia
+                        option(value='WI' selected=(restaurant ? (restaurant.state === 'WI' ? true : undefined): undefined)) Wisconsin
+                        option(value='WY' selected=(restaurant ? (restaurant.state === 'WY' ? true : undefined): undefined)) Wyoming
+                div.form-group
+                    label(for="cuisine") Cuisine
+                    select(id="cuisine" name="cuisine")
+                        option(value='African' selected=(restaurant ? (restaurant.cuisine === 'African' ? true : undefined): undefined)) African
+                        option(value='Albanian' selected=(restaurant ? (restaurant.cuisine === 'Albanian' ? true : undefined): undefined)) Albanian
+                        option(value='Alcohol' selected=(restaurant ? (restaurant.cuisine === 'Alcohol' ? true : undefined): undefined)) Alcohol
+                        option(value='American' selected=(restaurant ? (restaurant.cuisine === 'American' ? true : undefined): undefined)) American
+                        option(value='Argentinian' selected=(restaurant ? (restaurant.cuisine === 'Argentinian' ? true : undefined): undefined)) Argentinian
+                        option(value='Asian' selected=(restaurant ? (restaurant.cuisine === 'Asian' ? true : undefined): undefined)) Asian
+                        option(value='Australian' selected=(restaurant ? (restaurant.cuisine === 'Australian' ? true : undefined): undefined)) Australian
+                        option(value='Austrian' selected=(restaurant ? (restaurant.cuisine === 'Austrian' ? true : undefined): undefined)) Austrian
+                        option(value='Bagels' selected=(restaurant ? (restaurant.cuisine === 'Bagels' ? true : undefined): undefined)) Bagels
+                        option(value='Bakery' selected=(restaurant ? (restaurant.cuisine === 'Bakery' ? true : undefined): undefined)) Bakery
+                        option(value='Bar_Food' selected=(restaurant ? (restaurant.cuisine === 'Bar_Food' ? true : undefined): undefined)) Bar Food
+                        option(value='BBQ' selected=(restaurant ? (restaurant.cuisine === 'BBQ' ? true : undefined): undefined)) BBQ
+                        option(value='Belgian' selected=(restaurant ? (restaurant.cuisine === 'Belgian' ? true : undefined): undefined)) Belgian
+                        option(value='Brazilian' selected=(restaurant ? (restaurant.cuisine === 'Brazilian' ? true : undefined): undefined)) Brazilian
+                        option(value='Breakfast' selected=(restaurant ? (restaurant.cuisine === 'Breakfast' ? true : undefined): undefined)) Breakfast
+                        option(value='British' selected=(restaurant ? (restaurant.cuisine === 'British' ? true : undefined): undefined)) British
+                        option(value='Burmese' selected=(restaurant ? (restaurant.cuisine === 'Burmese' ? true : undefined): undefined)) Burmese
+                        option(value='Cajun' selected=(restaurant ? (restaurant.cuisine === 'Cajun' ? true : undefined): undefined)) Cajun
+                        option(value='Californian' selected=(restaurant ? (restaurant.cuisine === 'Californian' ? true : undefined): undefined)) Californian
+                        option(value='Calzones' selected=(restaurant ? (restaurant.cuisine === 'Calzones' ? true : undefined): undefined)) Calzones
+                        option(value='Cambodian' selected=(restaurant ? (restaurant.cuisine === 'Cambodian' ? true : undefined): undefined)) Cambodian
+                        option(value='Cantonese' selected=(restaurant ? (restaurant.cuisine === 'Cantonese' ? true : undefined): undefined)) Cantonese
+                        option(value='Caribbean' selected=(restaurant ? (restaurant.cuisine === 'Caribbean' ? true : undefined): undefined)) Caribbean
+                        option(value='Cheesesteaks' selected=(restaurant ? (restaurant.cuisine === 'Cheesesteaks' ? true : undefined): undefined)) Cheesesteaks
+                        option(value='Chicken' selected=(restaurant ? (restaurant.cuisine === 'Chicken' ? true : undefined): undefined)) Chicken
+                        option(value='Chili' selected=(restaurant ? (restaurant.cuisine === 'Chili' ? true : undefined): undefined)) Chili
+                        option(value='Chinese' selected=(restaurant ? (restaurant.cuisine === 'Chinese' ? true : undefined): undefined)) Chinese
+                        option(value='Classic' selected=(restaurant ? (restaurant.cuisine === 'Classic' ? true : undefined): undefined)) Classic
+                        option(value='Coffee_and_Tea' selected=(restaurant ? (restaurant.cuisine === 'Coffee_and_Tea' ? true : undefined): undefined)) Coffee and Tea
+                        option(value='Colombian' selected=(restaurant ? (restaurant.cuisine === 'Colombian' ? true : undefined): undefined)) Colombian
+                        option(value='Costa_Rican' selected=(restaurant ? (restaurant.cuisine === 'Costa_Rican' ? true : undefined): undefined)) Costa Rican
+                        option(value='Crepes' selected=(restaurant ? (restaurant.cuisine === 'Crepes' ? true : undefined): undefined)) Crepes
+                        option(value='Cuban' selected=(restaurant ? (restaurant.cuisine === 'Cuban' ? true : undefined): undefined)) Cuban
+                        option(value='Deli' selected=(restaurant ? (restaurant.cuisine === 'Deli' ? true : undefined): undefined)) Deli
+                        option(value='Dessert' selected=(restaurant ? (restaurant.cuisine === 'Dessert' ? true : undefined): undefined)) Dessert
+                        option(value='Dim_Sum' selected=(restaurant ? (restaurant.cuisine === 'Dim_Sum' ? true : undefined): undefined)) Dim Sum
+                        option(value='Diner' selected=(restaurant ? (restaurant.cuisine === 'Diner' ? true : undefined): undefined)) Diner
+                        option(value='Dinner' selected=(restaurant ? (restaurant.cuisine === 'Dinner' ? true : undefined): undefined)) Dinner
+                        option(value='Dominican' selected=(restaurant ? (restaurant.cuisine === 'Dominican' ? true : undefined): undefined)) Dominican
+                        option(value='Eclectic' selected=(restaurant ? (restaurant.cuisine === 'Eclectic' ? true : undefined): undefined)) Eclectic
+                        option(value='Ecuadorian' selected=(restaurant ? (restaurant.cuisine === 'Ecuadorian' ? true : undefined): undefined)) Ecuadorian
+                        option(value='Egyptian' selected=(restaurant ? (restaurant.cuisine === 'Egyptian' ? true : undefined): undefined)) Egyptian
+                        option(value='El_Salvadoran' selected=(restaurant ? (restaurant.cuisine === 'El_Salvadoran' ? true : undefined): undefined)) El Salvadoran
+                        option(value='Empanadas' selected=(restaurant ? (restaurant.cuisine === 'Empanadas' ? true : undefined): undefined)) Empanadas
+                        option(value='English' selected=(restaurant ? (restaurant.cuisine === 'English' ? true : undefined): undefined)) English
+                        option(value='Ethiopian' selected=(restaurant ? (restaurant.cuisine === 'Ethiopian' ? true : undefined): undefined)) Ethiopian
+                        option(value='Filipino' selected=(restaurant ? (restaurant.cuisine === 'Filipino' ? true : undefined): undefined)) Filipino
+                        option(value='Fine_Dining' selected=(restaurant ? (restaurant.cuisine === 'Fine_Dining' ? true : undefined): undefined)) Fine Dining
+                        option(value='French' selected=(restaurant ? (restaurant.cuisine === 'French' ? true : undefined): undefined)) French
+                        option(value='Fresh_Fruits' selected=(restaurant ? (restaurant.cuisine === 'Fresh_Fruits' ? true : undefined): undefined)) Fresh Fruits
+                        option(value='Korean' selected=(restaurant ? (restaurant.cuisine === 'Korean' ? true : undefined): undefined)) Korean
+                        option(value='Mexican' selected=(restaurant ? (restaurant.cuisine === 'Mexican' ? true : undefined): undefined)) Mexican
+                        option(value='Thai' selected=(restaurant ? (restaurant.cuisine === 'Thai' ? true : undefined): undefined)) Thai
+                        option(value='Russian' selected=(restaurant ? (restaurant.cuisine === 'Russian' ? true : undefined): undefined)) Russian
+                        option(value='Indian' selected=(restaurant ? (restaurant.cuisine === 'Indian' ? true : undefined): undefined)) Indian
+                div.form-group
+                    label Rate this restaurant
+                    input(type="radio" name="rating" value="1" checked=(restaurant ? (restaurant.rating === 1 ? true : undefined): undefined))
+                    input(type="radio" name="rating" value="2" checked=(restaurant ? (restaurant.rating === 2 ? true : undefined): undefined))
+                    input(type="radio" name="rating" value="3" checked=(restaurant ? (restaurant.rating === 3 ? true : undefined): undefined))
+                    input(type="radio" name="rating" value="4" checked=(restaurant ? (restaurant.rating === 4 ? true : undefined): undefined))
+                    input(type="radio" name="rating" value="5" checked=(restaurant ? (restaurant.rating === 5 ? true : undefined): undefined))
+                div.form-group
+                    textarea.form-control(rows="5" name="bio" id='bio') #{restaurant.bio}
+                button.btn.btn-primary(type="submit" id="editKnopf") Update
+    script(src="https://code.jquery.com/jquery-2.1.4.min.js")
+    script(src="/js/editformcontrol.js")

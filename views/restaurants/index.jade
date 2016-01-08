@@ -1,0 +1,33 @@
+extends ../layout
+
+block content
+
+  h1 Showing All Restaurants
+
+
+  if restaurants
+    table.table.table-striped
+     thead
+       tr
+         th Image
+         th Name
+         th Location
+         th State
+         th Cuisine
+         th Rating
+         th Bio
+     tbody
+       for restaurant in restaurants
+         tr
+           td= restaurant.image
+           td
+             a(href='/restaurants/' + restaurant.name)= restaurant.name
+           td= restaurant.location
+           td= restaurant.state
+           td= restaurant.cuisine
+           th= restaurant.rating
+           th= restaurant.bio
+
+
+   div
+   a(href='/restaurants/new') Add New Restaurant
