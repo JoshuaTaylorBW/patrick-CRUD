@@ -1,3 +1,15 @@
+var shuffleRestaurant = function (array) {
+    for (var r = array.length - 1; r > 0; r --) {
+        var s = Math.floor(Math.random() * (r + 1));
+        var temp = array[r];
+        array[r] = array[s];
+        array[s] = temp;
+    }
+    return array;
+}
+
+chowHalls = shuffleRestaurant(chowHalls);
+
 for (i = 0; i < 6; i ++) {
     var build = $("#preview" + i);
     var starHold = $("#star" + i);
