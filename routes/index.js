@@ -4,7 +4,7 @@ var database = require('../database');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    res.redirect('/restaurants')
+    res.render('index')
 });
 
 module.exports = router;
