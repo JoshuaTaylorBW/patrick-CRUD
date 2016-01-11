@@ -1,4 +1,8 @@
-var inputs = $("form#editForm input, form#editForm textarea, form#editForm select");
+var inputs = $("#name, #location, #state, #cuisine, #bio");
+
+$("#image").change(function() {
+    $("#editNew").attr("src", $("#image").val());
+})
 
 var validateInputs = function validateInputs(inputs) {
   var validForm = true;

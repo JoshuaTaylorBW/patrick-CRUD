@@ -1,15 +1,20 @@
 extends ../layout
 
 block content
+    header
+        div(class="deltaJumbo")
+            h1(class="mainText") New Restaurant
+            a(class="inline2" href="/restaurants/") Home
     div.container
-        h1 Add a New Restaurant
+        div(id="imageTestDivNew")
+            img(src="#" id="testNew")
         form(action="/restaurants" method="post" id="addNew")
             div.form-group
                 label(for="name") Name
-                input.form-control(type="text" id="name" name="name" placeholder="Name")
+                input.form-control(type="text" id="name" name="name" placeholder="Name" maxlength="40")
             div.form-group
                 label(for="location") Location
-                input.form-control(type="text" id="location" name="location" placeholder="Location")
+                input.form-control(type="text" id="location" name="location" placeholder="Location" maxlength="40")
             div.form-group
                 label(for="state") State
                 select(id="state" name="state")
@@ -79,7 +84,7 @@ block content
                     option(value='Austrian') Austrian
                     option(value='Bagels') Bagels
                     option(value='Bakery') Bakery
-                    option(value='Bar_Food') Bar Food
+                    option(value='Bar Food') Bar Food
                     option(value='BBQ') BBQ
                     option(value='Belgian') Belgian
                     option(value='Brazilian') Brazilian
@@ -97,28 +102,28 @@ block content
                     option(value='Chili') Chili
                     option(value='Chinese') Chinese
                     option(value='Classic') Classic
-                    option(value='Coffee_and_Tea') Coffee and Tea
+                    option(value='Coffee and Tea') Coffee and Tea
                     option(value='Colombian') Colombian
-                    option(value='Costa_Rican') Costa Rican
+                    option(value='Costa Rican') Costa Rican
                     option(value='Crepes') Crepes
                     option(value='Cuban') Cuban
                     option(value='Deli') Deli
                     option(value='Dessert') Dessert
-                    option(value='Dim_Sum') Dim Sum
+                    option(value='Dim Sum') Dim Sum
                     option(value='Diner') Diner
                     option(value='Dinner') Dinner
                     option(value='Dominican') Dominican
                     option(value='Eclectic') Eclectic
                     option(value='Ecuadorian') Ecuadorian
                     option(value='Egyptian') Egyptian
-                    option(value='El_Salvadoran') El Salvadoran
+                    option(value='El Salvadoran') El Salvadoran
                     option(value='Empanadas') Empanadas
                     option(value='English') English
                     option(value='Ethiopian') Ethiopian
                     option(value='Filipino') Filipino
-                    option(value='Fine_Dining') Fine Dining
+                    option(value='Fine Dining') Fine Dining
                     option(value='French') French
-                    option(value='Fresh_Fruits') Fresh Fruits
+                    option(value='Fresh Fruits') Fresh Fruits
                     option(value='Korean') Korean
                     option(value='Mexican') Mexican
                     option(value='Thai') Thai
@@ -128,9 +133,9 @@ block content
                 label Rate This Restaurant:
             div.form-group
                 p From Ugh! ---> Oh Yea!
-                input(type="radio" name="rating" value="1" checked)
+                input(type="radio" name="rating" value="1" )
                 input(type="radio" name="rating" value="2")
-                input(type="radio" name="rating" value="3")
+                input(type="radio" name="rating" value="3" checked)
                 input(type="radio" name="rating" value="4")
                 input(type="radio" name="rating" value="5")
             div.form-group

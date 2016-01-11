@@ -1,10 +1,160 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px Arial, sans-serif;
 }
 
-a {
-  color: #00B7FF;
+header {
+    width: 100%;
+    min-height: 18%;
+    position: relative;
+    background-color: #86C67C;
+}
+
+#jumbotainer {
+    width: 100%;
+    height: 68%
+}
+
+h4 {
+    color: #404040;
+}
+
+.whiteFont {
+    color: white;
+}
+
+.bottomInfo {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin-bottom: -0.5px;
+}
+
+.previewContainer {
+    height: 300px;
+    width: 340px;
+    background-color: #F2F2F2;
+    border: 1px solid black;
+    float: left;
+    position: relative;
+    margin: 15px;
+    margin-top: 40px;
+    margin-left: 95px;
+    background-size: 225px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.starContainer {
+    height: 30px;
+    width: 170px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.mainShowDiv {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.rightDiv {
+    width: 48%;
+    height: 75%;
+    display: inline;
+    float: right;
+}
+
+.giveMeMoreDivs {
+    margin-top: 100px;
+}
+
+#showEditKnopf {
+    background-color: #86C67C;
+    display: inline;
+    border-radius: 2px;
+    width: 100px;
+    height: 35px;
+    margin: 12.5px;
+    margin-left: 0px;
+}
+
+#buttonHelp {
+    display: inline;
+}
+
+#deleteKnopf {
+    background-color: #EE6363;
+    display: inline;
+    border-radius: 2px;
+    width: 100px;
+    height: 35px;
+    margin: 12.5px;
+
+}
+
+.leftDiv {
+    width: 48%;
+    height: 75%;
+    display: inline;
+    float: left;
+}
+
+.starz {
+    display: inline;
+    height: 25px;
+    width: 25px;
+    margin-left: 3px;
+    margin-right: 2px;
+}
+
+#topJumbo {
+    width: 65%;
+    margin-left: 35%;
+}
+
+.deltaJumbo {
+    width: 65%;
+    margin-left: 26%;
+}
+
+.mainText {
+    font-size: 6em;
+    display: inline;
+}
+
+
+.inline {
+    position: absolute;
+    font-size: 2em;
+    color: white;
+    padding-right: 10px;
+    bottom: 0;
+    right: 0;
+}
+
+.inline2 {
+    position: absolute;
+    font-size: 2em;
+    color: white;
+    padding-right: 10px;
+    bottom: 0;
+    left: 0;
+}
+
+a.inline:link{
+  color:white;
+}
+a.inline:visited{
+  color:white;
+}
+a.inline:hover{
+  color:white;
+}
+a.inline:focus{
+  color:white;
+}
+a.inline:active{
+  color:white;
 }
 
 .container {
@@ -17,6 +167,7 @@ a {
 
 input[type="radio"] {
   margin-right: 1em;
+  margin-left: 1em;
 }
 
 table {

@@ -8,6 +8,12 @@ router.get('/restaurants', function(req, res, next) {
     })
 });
 
+router.get('/restaurants/all', function(req, res, next) {
+    database.outputAll().then(function(result) {
+        res.render('restaurants/all', {restaurants: result});
+    })
+});
+
 router.get('/restaurants/new', function(req, res, next) {
   res.render('restaurants/new');
 });
@@ -18,15 +24,18 @@ router.post('/restaurants', function(req, res, next) {
     var state = req.body.state;
     var cuisine = req.body.cuisine;
     var rating = req.body.rating;
+    if (req.body.image.length > 0) {
     var image = req.body.image;
+} else {
+    var image = "http://www.placehold.it/225x225"
+}
     var bio = req.body.bio;
     database.addPlace(name, location, state, cuisine, rating, image, bio).then(function(result){
-        res.redirect('/restaurants')
+        res.redirect('/restaurants/all')
     })
 })
 
 router.get('/restaurants/:name', function (req, res, next) {
-    console.log("hitting the correct route!!");
     var name = req.params.name;
     database.outputByName(name).then(function(result) {
         res.render('restaurants/show', {restaurant: result[0]})
@@ -47,7 +56,11 @@ router.post('/restaurants/:name', function (req, res, next) {
     var state = req.body.state;
     var cuisine = req.body.cuisine;
     var rating = req.body.rating;
+    if (req.body.image.length > 0) {
     var image = req.body.image;
+} else {
+    var image = "http://www.placehold.it/225x225"
+}
     var bio = req.body.bio;
     database.editPlace(x, name, location, state, cuisine, rating, image, bio).then(function(result) {
         res.redirect('/restaurants/' + name);
@@ -57,7 +70,7 @@ router.post('/restaurants/:name', function (req, res, next) {
 router.post('/restaurants/del/:name', function (req, res, next) {
     var name = req.params.name;
     database.deletePlace(name).then(function(result) {
-        res.redirect('/restaurants');
+        res.redirect('/restaurants/all');
     })
 })
 

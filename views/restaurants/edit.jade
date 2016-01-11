@@ -1,23 +1,28 @@
 extends ../layout
 
 block content
-
+    header
+        div(class="deltaJumbo")
+            h2(class="mainText") Editing #{restaurant.name}
+            a(class="inline2" href="/restaurants/") Home
     div.container
         if restaurant
+            script.
+                var pageData = "#{restaurant}"
             - var name = restaurant.name
-            h1 Editing #{restaurant.name}
+            - var imageValue = restaurant.image
+            - if (imageValue === "http://www.placehold.it/225x225") {
+            -   imageValue = "" }
+            div(id="editImageTest")
+                img(src="" + restaurant.image id="editNew")
             form(action="/restaurants/" + name method="post" id="editForm")
                 div.form-group
                     label(for="name") Name
-                    input.form-control(type="text" id="name" name="name"  value=restaurant.name)
-                div.form-group
-                    label(for="image") Image URL
-                    input.form-control(type="text" id="image" name="image"  value=restaurant.image)
+                    input.form-control(type="text" id="name" name="name" maxlength="40"  value=restaurant.name)
                 div.form-group
                     label(for="location") Location
-                    input.form-control(type="text" id="location" name="location" value=restaurant.location)
+                    input.form-control(type="text" id="location" name="location" maxlength="40" value=restaurant.location)
                 div.form-group
-                    label(for="state") State
                     select(id="state" name="state")
                         option(value='AL' selected=(restaurant ? (restaurant.state === 'AL' ? true : undefined): undefined)) Alabama
                         option(value='AK' selected=(restaurant ? (restaurant.state === 'AK' ? true : undefined): undefined)) Alaska
@@ -72,6 +77,7 @@ block content
                         option(value='WY' selected=(restaurant ? (restaurant.state === 'WY' ? true : undefined): undefined)) Wyoming
                 div.form-group
                     label(for="cuisine") Cuisine
+                    br
                     select(id="cuisine" name="cuisine")
                         option(value='African' selected=(restaurant ? (restaurant.cuisine === 'African' ? true : undefined): undefined)) African
                         option(value='Albanian' selected=(restaurant ? (restaurant.cuisine === 'Albanian' ? true : undefined): undefined)) Albanian
@@ -83,7 +89,7 @@ block content
                         option(value='Austrian' selected=(restaurant ? (restaurant.cuisine === 'Austrian' ? true : undefined): undefined)) Austrian
                         option(value='Bagels' selected=(restaurant ? (restaurant.cuisine === 'Bagels' ? true : undefined): undefined)) Bagels
                         option(value='Bakery' selected=(restaurant ? (restaurant.cuisine === 'Bakery' ? true : undefined): undefined)) Bakery
-                        option(value='Bar_Food' selected=(restaurant ? (restaurant.cuisine === 'Bar_Food' ? true : undefined): undefined)) Bar Food
+                        option(value='Bar Food' selected=(restaurant ? (restaurant.cuisine === 'Bar Food' ? true : undefined): undefined)) Bar Food
                         option(value='BBQ' selected=(restaurant ? (restaurant.cuisine === 'BBQ' ? true : undefined): undefined)) BBQ
                         option(value='Belgian' selected=(restaurant ? (restaurant.cuisine === 'Belgian' ? true : undefined): undefined)) Belgian
                         option(value='Brazilian' selected=(restaurant ? (restaurant.cuisine === 'Brazilian' ? true : undefined): undefined)) Brazilian
@@ -101,40 +107,43 @@ block content
                         option(value='Chili' selected=(restaurant ? (restaurant.cuisine === 'Chili' ? true : undefined): undefined)) Chili
                         option(value='Chinese' selected=(restaurant ? (restaurant.cuisine === 'Chinese' ? true : undefined): undefined)) Chinese
                         option(value='Classic' selected=(restaurant ? (restaurant.cuisine === 'Classic' ? true : undefined): undefined)) Classic
-                        option(value='Coffee_and_Tea' selected=(restaurant ? (restaurant.cuisine === 'Coffee_and_Tea' ? true : undefined): undefined)) Coffee and Tea
+                        option(value='Coffee and Tea' selected=(restaurant ? (restaurant.cuisine === 'Coffee and Tea' ? true : undefined): undefined)) Coffee and Tea
                         option(value='Colombian' selected=(restaurant ? (restaurant.cuisine === 'Colombian' ? true : undefined): undefined)) Colombian
-                        option(value='Costa_Rican' selected=(restaurant ? (restaurant.cuisine === 'Costa_Rican' ? true : undefined): undefined)) Costa Rican
+                        option(value='Costa Rican' selected=(restaurant ? (restaurant.cuisine === 'Costa Rican' ? true : undefined): undefined)) Costa Rican
                         option(value='Crepes' selected=(restaurant ? (restaurant.cuisine === 'Crepes' ? true : undefined): undefined)) Crepes
                         option(value='Cuban' selected=(restaurant ? (restaurant.cuisine === 'Cuban' ? true : undefined): undefined)) Cuban
                         option(value='Deli' selected=(restaurant ? (restaurant.cuisine === 'Deli' ? true : undefined): undefined)) Deli
                         option(value='Dessert' selected=(restaurant ? (restaurant.cuisine === 'Dessert' ? true : undefined): undefined)) Dessert
-                        option(value='Dim_Sum' selected=(restaurant ? (restaurant.cuisine === 'Dim_Sum' ? true : undefined): undefined)) Dim Sum
+                        option(value='Dim Sum' selected=(restaurant ? (restaurant.cuisine === 'Dim Sum' ? true : undefined): undefined)) Dim Sum
                         option(value='Diner' selected=(restaurant ? (restaurant.cuisine === 'Diner' ? true : undefined): undefined)) Diner
                         option(value='Dinner' selected=(restaurant ? (restaurant.cuisine === 'Dinner' ? true : undefined): undefined)) Dinner
                         option(value='Dominican' selected=(restaurant ? (restaurant.cuisine === 'Dominican' ? true : undefined): undefined)) Dominican
                         option(value='Eclectic' selected=(restaurant ? (restaurant.cuisine === 'Eclectic' ? true : undefined): undefined)) Eclectic
                         option(value='Ecuadorian' selected=(restaurant ? (restaurant.cuisine === 'Ecuadorian' ? true : undefined): undefined)) Ecuadorian
                         option(value='Egyptian' selected=(restaurant ? (restaurant.cuisine === 'Egyptian' ? true : undefined): undefined)) Egyptian
-                        option(value='El_Salvadoran' selected=(restaurant ? (restaurant.cuisine === 'El_Salvadoran' ? true : undefined): undefined)) El Salvadoran
+                        option(value='El Salvadoran' selected=(restaurant ? (restaurant.cuisine === 'El Salvadoran' ? true : undefined): undefined)) El Salvadoran
                         option(value='Empanadas' selected=(restaurant ? (restaurant.cuisine === 'Empanadas' ? true : undefined): undefined)) Empanadas
                         option(value='English' selected=(restaurant ? (restaurant.cuisine === 'English' ? true : undefined): undefined)) English
                         option(value='Ethiopian' selected=(restaurant ? (restaurant.cuisine === 'Ethiopian' ? true : undefined): undefined)) Ethiopian
                         option(value='Filipino' selected=(restaurant ? (restaurant.cuisine === 'Filipino' ? true : undefined): undefined)) Filipino
-                        option(value='Fine_Dining' selected=(restaurant ? (restaurant.cuisine === 'Fine_Dining' ? true : undefined): undefined)) Fine Dining
+                        option(value='Fine Dining' selected=(restaurant ? (restaurant.cuisine === 'Fine Dining' ? true : undefined): undefined)) Fine Dining
                         option(value='French' selected=(restaurant ? (restaurant.cuisine === 'French' ? true : undefined): undefined)) French
-                        option(value='Fresh_Fruits' selected=(restaurant ? (restaurant.cuisine === 'Fresh_Fruits' ? true : undefined): undefined)) Fresh Fruits
+                        option(value='Fresh Fruits' selected=(restaurant ? (restaurant.cuisine === 'Fresh Fruits' ? true : undefined): undefined)) Fresh Fruits
                         option(value='Korean' selected=(restaurant ? (restaurant.cuisine === 'Korean' ? true : undefined): undefined)) Korean
                         option(value='Mexican' selected=(restaurant ? (restaurant.cuisine === 'Mexican' ? true : undefined): undefined)) Mexican
                         option(value='Thai' selected=(restaurant ? (restaurant.cuisine === 'Thai' ? true : undefined): undefined)) Thai
                         option(value='Russian' selected=(restaurant ? (restaurant.cuisine === 'Russian' ? true : undefined): undefined)) Russian
                         option(value='Indian' selected=(restaurant ? (restaurant.cuisine === 'Indian' ? true : undefined): undefined)) Indian
                 div.form-group
-                    label Rate this restaurant
+                    label Rating
                     input(type="radio" name="rating" value="1" checked=(restaurant ? (restaurant.rating === 1 ? true : undefined): undefined))
                     input(type="radio" name="rating" value="2" checked=(restaurant ? (restaurant.rating === 2 ? true : undefined): undefined))
                     input(type="radio" name="rating" value="3" checked=(restaurant ? (restaurant.rating === 3 ? true : undefined): undefined))
                     input(type="radio" name="rating" value="4" checked=(restaurant ? (restaurant.rating === 4 ? true : undefined): undefined))
                     input(type="radio" name="rating" value="5" checked=(restaurant ? (restaurant.rating === 5 ? true : undefined): undefined))
+                div.form-group
+                    label(for="image") Image URL
+                    input.form-control(type="text" id="image" placeholder="Image URL" value=imageValue name="image")
                 div.form-group
                     textarea.form-control(rows="5" name="bio" id='bio') #{restaurant.bio}
                 button.btn.btn-primary(type="submit" id="editKnopf") Update

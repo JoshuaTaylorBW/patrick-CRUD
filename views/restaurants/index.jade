@@ -2,32 +2,33 @@ extends ../layout
 
 block content
 
-  h1 Showing All Restaurants
+  header
+    div(id="topJumbo")
+        h1(class="mainText") gTables
+        a(class="inline" href='/restaurants/new') Add New Restaurant
+        a(class="inline2" href="/restaurants/all") All Restaurants
+  div(id="jumbotainer")
+    if restaurants
+        script(type="text/javascript").
+            var chowHalls = !{JSON.stringify(restaurants)};
+        a(id="path0" href="#")
+            div(class="previewContainer" id="preview0")
+                div(class="starContainer" id="star0")
+        a(id="path1" href="#")
+            div(class="previewContainer" id="preview1")
+                div(class="starContainer" id="star1")
+        a(id="path2" href="#")
+            div(class="previewContainer" id="preview2")
+                div(class="starContainer" id="star2")
+        a(id="path3" href="#")
+            div(class="previewContainer" id="preview3")
+                div(class="starContainer" id="star3")
+        a(id="path4" href="#")
+            div(class="previewContainer" id="preview4")
+                div(class="starContainer" id="star4")
+        a(id="path5" href="#")
+            div(class="previewContainer" id="preview5")
+                div(class="starContainer" id="star5")
 
-
-  if restaurants
-    table.table.table-striped
-     thead
-       tr
-         th Image
-         th Name
-         th Location
-         th State
-         th Cuisine
-         th Rating
-         th Bio
-     tbody
-       for restaurant in restaurants
-         tr
-           td= restaurant.image
-           td
-             a(href='/restaurants/' + restaurant.name)= restaurant.name
-           td= restaurant.location
-           td= restaurant.state
-           td= restaurant.cuisine
-           th= restaurant.rating
-           th= restaurant.bio
-
-
-   div
-   a(href='/restaurants/new') Add New Restaurant
+  script(src="https://code.jquery.com/jquery-2.1.4.min.js")
+  script(src="/js/populate.js")
