@@ -92,6 +92,26 @@ h4 {
 
 }
 
+.redKnopf {
+    background-color: #EE6363;
+    display: inline;
+    border-radius: 2px;
+    width: 100px;
+    height: 35px;
+    margin: 12.5px;
+
+}
+
+.greenKnopf {
+    background-color: #86C67C;
+    display: inline;
+    border-radius: 2px;
+    width: 100px;
+    height: 35px;
+    margin: 12.5px;
+
+}
+
 .leftDiv {
     width: 48%;
     height: 75%;

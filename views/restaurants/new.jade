@@ -143,6 +143,8 @@ block content
                 input(type="text" name="image" id="image" placeholder="Image URL")
             div.form-group
                 textarea.form-control(rows="5" id='bio' name='bio' placeholder="Short Bio")
-            button.btn.btn-primary(type="submit" id="addKnopf") Submit
+            button.btn.btn-primary(type="submit" id="addKnopf" class="greenKnopf") Submit
+        a(href="/restaurants")
+            button(class="redKnopf" type="button") Cancel
     script(src="https://code.jquery.com/jquery-2.1.4.min.js")
     script(src="/js/addformcontrol.js")

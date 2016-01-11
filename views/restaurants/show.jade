@@ -17,7 +17,7 @@ block content
         h4= restaurant.cuisine + " Cuisine"
         h4= "Located in " + restaurant.location + ", " + restaurant.state
         h4= restaurant.bio
-        h4(id="starSeeker") Rating: 
+        h4(id="starSeeker") Rating:
         a(href='/restaurants/' + restaurant.name + '/edit' class="whiteFont")
           button(id="showEditKnopf") Edit
         form(action='/restaurants/del/' + restaurant.name method='post' id="buttonHelp")
