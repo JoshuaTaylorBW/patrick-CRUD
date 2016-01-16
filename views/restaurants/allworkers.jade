@@ -5,7 +5,7 @@ block content
   header
     div(id="topJumbo")
         h1(class="mainText") Employees @ #{restaurant.name}
-        a(class="inline" href='/admin/' + #{restaurant.id} + '/new') New Employee
+        a(class="inline" href='/admin/' + #{restaurant.name} + '/new') New Employee
         a(class="inline2" href="/admin/") Admin Central
 
   if workers
