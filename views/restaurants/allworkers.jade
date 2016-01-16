@@ -1,0 +1,24 @@
+extends ../layout
+
+block content
+
+  header
+    div(id="topJumbo")
+        h1(class="mainText") Employees @ #{restaurant.name}
+        a(class="inline" href='/admin/' + #{restaurant.id} + '/new') New Employee
+        a(class="inline2" href="/admin/") Admin Central
+
+  if workers
+    table.table.table-striped
+     thead
+       tr
+         th First Name
+         th Last Name
+         th Position
+     tbody
+       for worker in workers
+         tr
+           td
+             a(href='/admin/workers/' + worker.id)= worker.first_name
+           td= worker.last_name
+           td= worker.positon

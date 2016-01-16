@@ -81,4 +81,14 @@ router.get('/admin/', function (req, res, next) {
     })
 })
 
+router.get('/admin/:id/manage', function (res, req, next) {
+    var id = req.params.id;
+    database.outputWorkers(id).then(function(result) {
+        database.outputById(id).then(function(payload) {
+            var chow = payload[0];
+            res.render('restaurants/allworkers', {restaurant: chow, workers: result})
+        })
+    })
+})
+
 module.exports = router;

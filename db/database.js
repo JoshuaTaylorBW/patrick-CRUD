@@ -42,11 +42,11 @@ module.exports = {
     },
 
     outputWorker: function (x) {
-        return knex('employees').where('id', x);
+        return knex.from('employees').innerJoin('the_table', 'employees.the_table_id', 'the_table.id').where('employees.id', x);
     },
 
-    outputWorkers: function () {
-        return knex('employees');
+    outputWorkers: function (x) {
+        return knex.from('employees').innerJoin('the_table', 'employees.the_table_id', 'the_table.id').where('the_table.id', x);
     },
 
     addWorker: function(restId, first, last) {
