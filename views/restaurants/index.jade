@@ -8,6 +8,8 @@ block content
         a(class="inline" href='/restaurants/new/') Add New Restaurant
         a(class="inline2" href="/restaurants/all/") All Restaurants
   div(id="jumbotainer")
+    a(href='/admin')
+        button(class=greenKnopf) Admin
     if restaurants
         script(type="text/javascript").
             var chowHalls = !{JSON.stringify(restaurants)};

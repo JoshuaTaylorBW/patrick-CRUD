@@ -35,22 +35,22 @@ router.post('/restaurants/', function(req, res, next) {
     })
 })
 
-router.get('/restaurants/:name/', function (req, res, next) {
-    var name = req.params.name;
-    database.outputByName(name).then(function(result) {
+router.get('/restaurants/:id/', function (req, res, next) {
+    var id = req.params.id;
+    database.outputById(id).then(function(result) {
         res.render('restaurants/show', {restaurant: result[0]})
     })
 })
 
-router.get('/restaurants/:name/edit/', function (req, res, next) {
-    var name = req.params.name;
-    database.outputByName(name).then(function(result) {
+router.get('/restaurants/:id/edit/', function (req, res, next) {
+    var id = req.params.id;
+    database.outputById(id).then(function(result) {
         res.render('restaurants/edit', {restaurant: result[0]})
     })
 })
 
-router.post('/restaurants/:name/', function (req, res, next) {
-    var x = req.params.name;
+router.post('/restaurants/:id/', function (req, res, next) {
+    var x = req.params.id;
     var name = req.body.name;
     var location = req.body.location;
     var state = req.body.state;
@@ -63,14 +63,20 @@ router.post('/restaurants/:name/', function (req, res, next) {
 }
     var bio = req.body.bio;
     database.editPlace(x, name, location, state, cuisine, rating, image, bio).then(function(result) {
-        res.redirect('/restaurants/' + name);
+        res.redirect('/restaurants/' + x);
     })
 })
 
-router.post('/restaurants/del/:name/', function (req, res, next) {
-    var name = req.params.name;
-    database.deletePlace(name).then(function(result) {
+router.post('/restaurants/del/:id/', function (req, res, next) {
+    var id = req.params.id;
+    database.deletePlace(id).then(function(result) {
         res.redirect('/restaurants/all/');
+    })
+})
+
+router.get('/admin/', function (req, res, next) {
+    database.outputAll().then(function(result) {
+        res.render('restaurants/admin', {restaurants: result})
     })
 })
 

@@ -5,8 +5,8 @@ var knex = require('knex')({
 
 module.exports = {
     knex: knex,
-    outputByName: function (x) {
-        return knex('the_table').where('name', x);
+    outputById: function (x) {
+        return knex('the_table').where('id', x);
     },
     outputAll: function() {
         return knex('the_table');
@@ -25,7 +25,7 @@ module.exports = {
     },
 
     editPlace: function(x, name, location, state, cuisine, rating, image, bio) {
-        return knex('the_table').where('name', x).update({
+        return knex('the_table').where('id', x).update({
             'name': name.trim(),
             'location': location.trim(),
             'state': state.trim(),
@@ -37,6 +37,34 @@ module.exports = {
     },
 
     deletePlace: function (x) {
-        return knex('the_table').where('name', x).del();
+        return knex('the_table').where('id', x).del();
+    },
+
+    outputWorker: function (x) {
+        return knex('employees').where('id', x);
+    },
+
+    outputWorkers: function () {
+        return knex('employees');
+    },
+
+    addWorker: function(restId, first, last) {
+        return knex('employees').insert({
+            'rest_id': restId.trim(),
+            'first_name': first.trim(),
+            'last_name': last.trim(),
+        });
+    },
+
+    editWorker: function(x, name, location, state, cuisine, rating, image, bio) {
+        return knex('employees').where('id', x).update({
+            'rest_id': restId.trim(),
+            'first_name': first.trim(),
+            'last_name': last.trim(),
+        });
+    },
+
+    deleteWorker: function (x) {
+        return knex('employees').where('id', x).del();
     }
 }

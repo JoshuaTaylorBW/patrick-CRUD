@@ -1,0 +1,25 @@
+extends ../layout
+
+block content
+
+    header
+      div(id="topJumbo")
+          h1(class="mainText") gTables Admin
+          a(class="inline" href='/restaurants/new/') Add New Restaurant
+          a(class="inline2" href="/restaurants/") Home
+
+    if restaurants
+      table.table.table-striped
+       thead
+         tr
+           th Image
+           th Manage
+           th Employees
+       tbody
+         for restaurant in restaurants
+           tr
+             td
+               img(src=restaurant.image alt="No Image Provided." width="225px" height="225px")
+             td
+               a(href='/restaurants/' + restaurant.name +'/manage/') Manage #{restaurant.name}
+             td placeholder

@@ -9,13 +9,13 @@ block content
         if restaurant
             script.
                 var pageData = "#{restaurant}"
-            - var name = restaurant.name
+            - var id = restaurant.id
             - var imageValue = restaurant.image
             - if (imageValue === "http://www.placehold.it/225x225") {
             -   imageValue = "" }
             div(id="editImageTest")
                 img(src="" + restaurant.image id="editNew" width="225px")
-            form(action="/restaurants/" + name method="post" id="editForm")
+            form(action="/restaurants/" + id method="post" id="editForm")
                 div.form-group
                     label(for="name") Name
                     input.form-control(type="text" id="name" name="name" maxlength="40"  value=restaurant.name)

@@ -24,7 +24,7 @@ block content
            td
              img(src=restaurant.image alt="No Image Provided." width="225px" height="225px")
            td
-             a(href='/restaurants/' + restaurant.name)= restaurant.name
+             a(href='/restaurants/' + restaurant.id)= restaurant.name
            td= restaurant.location + ", " + restaurant.state
            td= restaurant.cuisine
            th= restaurant.rating

@@ -14,7 +14,7 @@ for (i = 0; i < 6; i ++) {
     var build = $("#preview" + i);
     var starHold = $("#star" + i);
     var block = chowHalls[i];
-    $("#path" + i).attr("href", "/restaurants/" + block.name)
+    $("#path" + i).attr("href", "/restaurants/" + block.id)
     if (block.image.length > 0) {
         var picture = block.image;
     } else {

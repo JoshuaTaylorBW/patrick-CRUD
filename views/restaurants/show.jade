@@ -18,9 +18,9 @@ block content
         h4= "Located in " + restaurant.location + ", " + restaurant.state
         h4= restaurant.bio
         h4(id="starSeeker") Rating:
-        a(href='/restaurants/' + restaurant.name + '/edit' class="whiteFont")
+        a(href='/restaurants/' + restaurant.id + '/edit' class="whiteFont")
           button(id="showEditKnopf") Edit
-        form(action='/restaurants/del/' + restaurant.name method='post' id="buttonHelp")
+        form(action='/restaurants/del/' + restaurant.id method='post' id="buttonHelp")
           button(id="deleteKnopf")
             input.btn.btn-link(type='submit' value='Delete' class="whiteFont")
   script(src="https://code.jquery.com/jquery-2.1.4.min.js")
