@@ -1,7 +1,8 @@
-var knex = require('knex')({
-    client: 'postgresql',
-    connection: process.env.DATABASE_URL ||  'postgres://localhost/restaurants'
-})
+// var knex = require('knex')({
+//     client: 'postgresql',
+//     connection: process.env.DATABASE_URL ||  'postgres://localhost/restaurants'
+// })
+var knex = require('./knex')
 
 module.exports = {
     knex: knex,

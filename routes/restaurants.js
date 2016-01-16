@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
-var database = require('../database');
+var knex = require('../db/knex');
+var database = require('../db/database');
 
 router.get('/restaurants/', function(req, res, next) {
     database.outputAll().then(function(result) {
