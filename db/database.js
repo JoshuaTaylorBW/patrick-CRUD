@@ -42,7 +42,7 @@ module.exports = {
     },
 
     outputWorker: function (x) {
-        return knex.from('employees').innerJoin('the_table', 'employees.the_table_id', 'the_table.id').where('employees.id', x);
+        return knex.from('employees').where('employees.id', x);
     },
 
     outputWorkers: function (x) {

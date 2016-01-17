@@ -1,0 +1,13 @@
+extends ../layout
+
+block content
+
+  if worker
+    header
+      div(class="deltaJumbo")
+        h1(class="mainText2") #{worker.last_name}, #{worker.first_name}
+        a(class="inline2" href="/restaurants/") Home
+    div
+        h4= worker.first_name
+        h4= worker.last_name
+        h4= worker.position

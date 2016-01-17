@@ -109,4 +109,11 @@ router.post('/admin/:id/manage', function (req, res, next) {
     })
         })
 
+router.get('/admin/workers/:id', function (req, res, next) {
+    var id = req.params.id;
+    database.outputWorker(id).then(function (result) {
+        res.render('restaurants/showworker', {worker: result[0]})
+    })
+})
+
 module.exports = router;

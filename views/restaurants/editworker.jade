@@ -4,25 +4,25 @@ block content
     header
         div(class="deltaJumbo")
             h1(class="mainText2") New Employee @ #{restaurant.name}
-    div.container
-        form(action="/admin/" + restaurant.id + "/manage" method="post" id="addWorker")
-            div.form-group
-                label(for="first_name") First Name:
-                input.form-control(type="text" id="first_name" name="first_name" placeholder="First Name" maxlength="40")
-            div.form-group
-                label(for="last_name") Last Name:
-                input.form-control(type="text" id="last_name" name="last_name" placeholder="Last Name" maxlength="40")
-            div.form-group
-                label(for="position") Role:
-                select(id="position" name="position")
-                    option(selected="true" disabled="true") Select A Role
-                    option(value='server') Server
-                    option(value='manager') Manager
-                    option(value='host') Host
-                    option(value='cook') Cook
-                input(type='hidden' name='restId' value= restaurant.id)
-            button.btn.btn-primary(type="submit" id="addKnopf" class="greenKnopf") Submit
-        a(href="/admin/" + restaurant.id + "/manage")
-            button(class="redKnopf" type="button") Cancel
+    if worker
+        div.container
+            form(action="/admin/" + restaurant.id + "/manage" method="post" id="addWorker")
+                div.form-group
+                    label(for="first_name") First Name:
+                    input.form-control(type="text" id="first_name" value= worker.first_name name="first_name" placeholder="First Name" maxlength="40")
+                div.form-group
+                    label(for="last_name") Last Name:
+                    input.form-control(type="text" id="last_name" value= worker.last_name name="last_name" placeholder="Last Name" maxlength="40")
+                div.form-group
+                    label(for="position") Role:
+                    select(id="position" name="position")
+                        option(value='server') Server
+                        option(value='manager') Manager
+                        option(value='host') Host
+                        option(value='cook') Cook
+                    input(type='hidden' name='restId' value= restaurant.id)
+                button.btn.btn-primary(type="submit" id="addKnopf" class="greenKnopf") Submit
+            a(href="/admin/" + restaurant.id + "/manage")
+                button(class="redKnopf" type="button") Cancel
     script(src="https://code.jquery.com/jquery-2.1.4.min.js")
     script(src="/js/workeredit.js")
