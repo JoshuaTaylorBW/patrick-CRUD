@@ -142,6 +142,11 @@ h4 {
     display: inline;
 }
 
+.mainText2 {
+    font-size: 4em;
+    display: inline;
+}
+
 
 .inline {
     position: absolute;

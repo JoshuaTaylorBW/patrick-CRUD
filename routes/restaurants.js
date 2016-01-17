@@ -81,7 +81,7 @@ router.get('/admin/', function (req, res, next) {
     })
 })
 
-router.get('/admin/:id/manage', function (res, req, next) {
+router.get('/admin/:id/manage', function (req, res, next) {
     var id = req.params.id;
     database.outputWorkers(id).then(function(result) {
         database.outputById(id).then(function(payload) {
@@ -90,5 +90,23 @@ router.get('/admin/:id/manage', function (res, req, next) {
         })
     })
 })
+
+router.get('/admin/:id/new', function (req, res, next) {
+    var id = req.params.id;
+    database.outputById(id).then(function (result) {
+        res.render('restaurants/newworker', {restaurant: result[0]})
+    })
+})
+
+router.post('/admin/:id/manage', function (req, res, next) {
+    var id = req.params.id;
+    var rest_id = req.body.restId;
+    var first = req.body.first_name;
+    var last = req.body.last_name;
+    var role = req.body.position;
+    database.addWorker(rest_id, first, last, role).then(function(result) {
+        res.redirect('/admin/' + id + '/manage')
+    })
+        })
 
 module.exports = router;

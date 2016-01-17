@@ -4,8 +4,8 @@ block content
 
   header
     div(id="topJumbo")
-        h1(class="mainText") Employees @ #{restaurant.name}
-        a(class="inline" href='/admin/' + #{restaurant.name} + '/new') New Employee
+        h1(class="mainText2") #{restaurant.name} Employees
+        a(class="inline" href='/admin/' + restaurant.id + '/new') New Employee
         a(class="inline2" href="/admin/") Admin Central
 
   if workers
@@ -21,4 +21,4 @@ block content
            td
              a(href='/admin/workers/' + worker.id)= worker.first_name
            td= worker.last_name
-           td= worker.positon
+           td= worker.position
