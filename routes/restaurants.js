@@ -116,4 +116,29 @@ router.get('/admin/workers/:id', function (req, res, next) {
     })
 })
 
+router.post('/admin/workers/del/:id', function (req, res, next) {
+    var id = req.params.id;
+    var restId = req.body.restId;
+    database.deleteWorker(id).then(function (result) {
+        res.redirect('/admin/' + restId + '/manage')
+    })
+})
+
+router.get('/admin/workers/:id/edit', function (req, res, next) {
+    var id = req.params.id;
+    database.outputWorker(id).then(function (result) {
+        res.render('restaurants/editworker', {worker: result[0]})
+    })
+})
+
+router.post('/admin/workers/:id', function (req, res, next) {
+    var id = req.params.id;
+    var first = req.body.first_name;
+    var last = req.body.last_name;
+    var role = req.body.position;
+    database.editWorker(id, first, last, role).then(function (result) {
+        res.redirect('/admin/workers/' + id);
+    })
+})
+
 module.exports = router;

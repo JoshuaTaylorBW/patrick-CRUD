@@ -46,7 +46,7 @@ module.exports = {
     },
 
     outputWorkers: function (x) {
-        return knex.from('employees').innerJoin('the_table', 'employees.the_table_id', 'the_table.id').where('employees.the_table_id', x);
+        return knex.from('employees').innerJoin('the_table', 'employees.the_table_id', 'the_table.id').select('employees.id', 'employees.first_name', 'employees.last_name', 'employees.position', 'employees.the_table_id').where('the_table.id', x);
     },
 
     addWorker: function(restId, first, last, role) {
@@ -58,11 +58,11 @@ module.exports = {
         });
     },
 
-    editWorker: function(x, name, location, state, cuisine, rating, image, bio) {
+    editWorker: function(x, first, last, role) {
         return knex('employees').where('id', x).update({
-            'rest_id': restId.trim(),
             'first_name': first.trim(),
             'last_name': last.trim(),
+            'position': role.trim()
         });
     },
 

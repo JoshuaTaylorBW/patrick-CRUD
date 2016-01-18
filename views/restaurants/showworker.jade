@@ -11,3 +11,9 @@ block content
         h4= worker.first_name
         h4= worker.last_name
         h4= worker.position
+        a(href='/admin/workers/' + worker.id + '/edit' class="whiteFont")
+          button(id="showEditKnopf") Edit
+        form(action='/admin/workers/del/' + worker.id method='post' id="buttonHelp")
+          input(type="hidden" value=worker.the_table_id name="restId")
+          button(id="deleteKnopf")
+            input.btn.btn-link(type='submit' value='Delete' class="whiteFont")

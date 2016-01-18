@@ -3,10 +3,10 @@ extends ../layout
 block content
     header
         div(class="deltaJumbo")
-            h1(class="mainText2") New Employee @ #{restaurant.name}
+            h1(class="mainText2") #{worker.last_name}, #{worker.first_name}
     if worker
         div.container
-            form(action="/admin/" + restaurant.id + "/manage" method="post" id="addWorker")
+            form(action="/admin/workers/" + worker.id method="post" id="addWorker")
                 div.form-group
                     label(for="first_name") First Name:
                     input.form-control(type="text" id="first_name" value= worker.first_name name="first_name" placeholder="First Name" maxlength="40")
@@ -20,9 +20,8 @@ block content
                         option(value='manager') Manager
                         option(value='host') Host
                         option(value='cook') Cook
-                    input(type='hidden' name='restId' value= restaurant.id)
                 button.btn.btn-primary(type="submit" id="addKnopf" class="greenKnopf") Submit
-            a(href="/admin/" + restaurant.id + "/manage")
+            a(href="/admin/workers/" + worker.id)
                 button(class="redKnopf" type="button") Cancel
     script(src="https://code.jquery.com/jquery-2.1.4.min.js")
     script(src="/js/workeredit.js")
