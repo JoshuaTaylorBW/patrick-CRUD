@@ -1,0 +1,32 @@
+extends ../layout
+
+block content
+    header
+        div(class="deltaJumbo")
+            h1(class="mainText2") New Review
+    if review
+        div.container
+            form(action="/restaurants/" + review.the_table_id + "/editreview" method="post" id="addReview")
+                div.form-group
+                    label(for="review_title") Review Title:
+                    input.form-control(type="text" id="review_title" name="review_title" value= review.review_title placeholder="Review Title" maxlength="40")
+                div.form-group
+                    label(for="author_handle") Author's Handle:
+                    input.form-control(type="text" id="author_handle" value= review.author_handle name="author_handle" placeholder="Author's Handle" maxlength="40")
+                div.form-group
+                    label Rate This Restaurant:
+                div.form-group
+                    p From Ugh! ---> Oh Yea!
+                    input(type="radio" name="review_rating" value="1" checked=(review ? (review.review_rating === 1 ? true : undefined): undefined))
+                    input(type="radio" name="review_rating" value="2" checked=(review ? (review.review_rating === 2 ? true : undefined): undefined))
+                    input(type="radio" name="review_rating" value="3" checked=(review ? (review.review_rating === 3 ? true : undefined): undefined))
+                    input(type="radio" name="review_rating" value="4" checked=(review ? (review.review_rating === 4 ? true : undefined): undefined))
+                    input(type="radio" name="review_rating" value="5" checked=(review ? (review.review_rating === 5 ? true : undefined): undefined))
+                input(type='hidden' name='revId' value= review.id)
+                div.form-group
+                    textarea.form-control(rows="5" id='review_content' name='review_content' placeholder='Your Soap-Box') #{review.review_content}
+                button.btn.btn-primary(type="submit" id="addKnopf" class="greenKnopf") Submit
+                a(href="/restaurants/" + review.the_table_id + "/reviews/" + review.id)
+                    button(class="redKnopf" type="button") Cancel
+    script(src="https://code.jquery.com/jquery-2.1.4.min.js")
+    script(src="/js/reviewedit.js")

@@ -18,6 +18,18 @@ block content
         h4= "Located in " + restaurant.location + ", " + restaurant.state
         h4= restaurant.bio
         h4(id="starSeeker") Rating:
+        if reviews
+            h4 Patron Reviews:
+            br
+            for review in reviews
+                div(class="blackborder")
+                    a(href='/restaurants/' + restaurant.id + '/reviews/' + review.id)= review.review_title
+                    p= review.review_rating
+                    h6= review.author_handle
+                    h6= review.review_content
+
+        a(href="/restaurants/" + restaurant.id + "/newreview" class="whiteFont")
+            button(type="button" class="greenKnopf") Add Review
         a(href='/restaurants/' + restaurant.id + '/edit' class="whiteFont")
           button(id="showEditKnopf") Edit
         form(action='/restaurants/del/' + restaurant.id method='post' id="buttonHelp")
@@ -25,3 +37,4 @@ block content
             input.btn.btn-link(type='submit' value='Delete' class="whiteFont")
   script(src="https://code.jquery.com/jquery-2.1.4.min.js")
   script(src="/js/showrating.js")
+  script(src="/js/reviewpopulate.js")

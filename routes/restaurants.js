@@ -39,7 +39,47 @@ router.post('/restaurants/', function(req, res, next) {
 router.get('/restaurants/:id/', function (req, res, next) {
     var id = req.params.id;
     database.outputById(id).then(function(result) {
-        res.render('restaurants/show', {restaurant: result[0]})
+        database.outputReviews(id).then(function(payload) {
+            res.render('restaurants/show', {restaurant: result[0], reviews: payload})
+        })
+    })
+})
+
+router.get('/restaurants/:id/newreview', function (req, res, next) {
+    var restId = req.params.id;
+    res.render('restaurants/newreview', {restaurant: restId})
+})
+
+router.post('/restaurants/:id/newreview', function (req, res, next) {
+    var restId = req.params.id;
+    var title = req.body.review_title;
+    var rating = req.body.review_rating;
+    var handle = req.body.author_handle;
+    var content = req.body.review_content;
+    database.addReview(restId, title, rating, handle, content).then(function (result) {
+        res.redirect('/restaurants/' + restId);
+    })
+})
+
+router.get('/restaurants/:id/reviews/:rid', function(req, res, next) {
+    var revid = req.params.rid;
+    database.outputReview(revid).then(function (result) {
+        res.render('restaurants/showreview', {review: result[0]});
+    })
+})
+
+router.get('/restaurants/:id/reviews/:rid/edit', function(req, res, next) {
+    var revid = req.params.rid;
+    database.outputReview(revid).then(function (result) {
+        res.render('restaurants/editreview', {review: result[0]});
+    })
+})
+
+router.post('/restaurants/:id/reviews/del/:rid', function(req, res, next) {
+    var revid = req.params.rid;
+    var id = req.params.id;
+    database.deleteReview(revid).then(function (result) {
+        res.redirect('/restaurants/' + id);
     })
 })
 
@@ -47,6 +87,18 @@ router.get('/restaurants/:id/edit/', function (req, res, next) {
     var id = req.params.id;
     database.outputById(id).then(function(result) {
         res.render('restaurants/edit', {restaurant: result[0]})
+    })
+})
+
+router.post('/restaurants/:id/editreview', function (req, res, next) {
+    var restId = req.params.id;
+    var revId = req.body.revId;
+    var title = req.body.review_title;
+    var rating = req.body.review_rating;
+    var handle = req.body.author_handle;
+    var content = req.body.review_content;
+    database.editReview(revId, title, rating, handle, content).then(function (result) {
+        res.redirect('/restaurants/' + restId);
     })
 })
 

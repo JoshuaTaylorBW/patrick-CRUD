@@ -127,6 +127,12 @@ h4 {
     margin-right: 2px;
 }
 
+.blackborder {
+    border: 1px solid black;
+    margin: 5px;
+    width: 80%;
+}
+
 #topJumbo {
     width: 65%;
     margin-left: 35%;

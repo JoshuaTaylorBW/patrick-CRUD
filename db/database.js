@@ -68,5 +68,36 @@ module.exports = {
 
     deleteWorker: function (x) {
         return knex('employees').where('id', x).del();
+    },
+
+    outputReview: function (x) {
+        return knex.from('reviews').where('reviews.id', x);
+    },
+
+    outputReviews: function (x) {
+        return knex.from('reviews').innerJoin('the_table', 'reviews.the_table_id', 'the_table.id').select('reviews.id', 'reviews.review_title', 'reviews.review_rating', 'reviews.review_content', 'reviews.author_handle',  'reviews.the_table_id').where('the_table.id', x);
+    },
+
+    addReview: function(restId, title, rating, handle, content) {
+        return knex('reviews').insert({
+            'the_table_id': restId.trim(),
+            'review_title': title.trim(),
+            'review_rating': rating.trim(),
+            'author_handle': handle.trim(),
+            'review_content': content.trim()
+        });
+    },
+
+    editReview: function(x, title, rating, handle, content) {
+        return knex('reviews').where('id', x).update({
+            'review_title': title.trim(),
+            'review_rating': rating.trim(),
+            'author_handle': handle.trim(),
+            'review_content': content.trim()
+        });
+    },
+
+    deleteReview: function (x) {
+        return knex('reviews').where('id', x).del();
     }
 }

@@ -1,0 +1,31 @@
+extends ../layout
+
+block content
+    header
+        div(class="deltaJumbo")
+            h1(class="mainText2") New Review
+    div.container
+        form(action="/restaurants/" + restaurant + "/newreview" method="post" id="addReview")
+            div.form-group
+                label(for="review_title") Review Title:
+                input.form-control(type="text" id="review_title" name="review_title" placeholder="Review Title" maxlength="40")
+            div.form-group
+                label(for="author_handle") Author's Handle:
+                input.form-control(type="text" id="author_handle" name="author_handle" placeholder="Author's Handle" maxlength="40")
+            div.form-group
+                label Rate This Restaurant:
+            div.form-group
+                p From Ugh! ---> Oh Yea!
+                input(type="radio" name="review_rating" value="1" )
+                input(type="radio" name="review_rating" value="2")
+                input(type="radio" name="review_rating" value="3" checked)
+                input(type="radio" name="review_rating" value="4")
+                input(type="radio" name="review_rating" value="5")
+            input(type='hidden' name='restId' value= restaurant)
+            div.form-group
+                textarea.form-control(rows="5" id='review_content' name='review_content' placeholder='Your Soap-Box')
+            button.btn.btn-primary(type="submit" id="addKnopf" class="greenKnopf") Submit
+        a(href="/restaurants/" + restaurant)
+            button(class="redKnopf" type="button") Cancel
+    script(src="https://code.jquery.com/jquery-2.1.4.min.js")
+    script(src="/js/reviewadd.js")
