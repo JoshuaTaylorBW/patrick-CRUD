@@ -19,7 +19,7 @@ block content
          for restaurant in restaurants
            tr
              td
-               img(src=restaurant.image alt="No Image Provided." width="225px" height="225px")
+               img(src=restaurant.url alt="No Image Provided." width="225px" height="225px")
              td
                a(href='/admin/' + restaurant.id +'/manage/') Manage #{restaurant.name}
              td placeholder

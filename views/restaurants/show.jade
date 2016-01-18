@@ -11,11 +11,11 @@ block content
         a(class="inline2" href="/restaurants/") Home
     div
       div(class="leftDiv")
-        img(src='' + restaurant.image width="100%")
+        img(src='' + restaurant.url width="100%")
       div(class="rightDiv")
         div(class="giveMeMoreDivs")
-        h4= restaurant.cuisine + " Cuisine"
-        h4= "Located in " + restaurant.location + ", " + restaurant.state
+        h4= restaurant.type + " Cuisine"
+        h4= "Located in " + restaurant.location
         h4= restaurant.bio
         h4(id="starSeeker") Rating:
         if reviews

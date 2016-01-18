@@ -7,38 +7,36 @@ var knex = require('./knex')
 module.exports = {
     knex: knex,
     outputById: function (x) {
-        return knex('the_table').where('id', x);
+        return knex('restaurants').where('id', x);
     },
     outputAll: function() {
-        return knex('the_table');
+        return knex('restaurants');
     },
 
     addPlace: function(name, location, state, cuisine, rating, image, bio) {
-        return knex('the_table').insert({
+        return knex('restaurants').insert({
             'name': name.trim(),
             'location': location.trim(),
-            'state': state.trim(),
-            'cuisine': cuisine.trim(),
+            'description': bio.trim(),
             'rating': rating.trim(),
-            'image': image.trim(),
-            'bio': bio.trim()
+            'type': cuisine.trim(),
+            'url': image.trim(),
         });
     },
 
     editPlace: function(x, name, location, state, cuisine, rating, image, bio) {
-        return knex('the_table').where('id', x).update({
-            'name': name.trim(),
-            'location': location.trim(),
-            'state': state.trim(),
-            'cuisine': cuisine.trim(),
-            'rating': rating.trim(),
-            'image': image.trim(),
-            'bio': bio.trim()
+        return knex('restaurants').where('id', x).update({
+          'name': name.trim(),
+          'location': location.trim(),
+          'description': bio.trim(),
+          'rating': rating.trim(),
+          'type': cuisine.trim(),
+          'url': image.trim(),
         });
     },
 
     deletePlace: function (x) {
-        return knex('the_table').where('id', x).del();
+        return knex('food').where('id', x).del();
     },
 
     outputWorker: function (x) {
@@ -46,12 +44,12 @@ module.exports = {
     },
 
     outputWorkers: function (x) {
-        return knex.from('employees').innerJoin('the_table', 'employees.the_table_id', 'the_table.id').select('employees.id', 'employees.first_name', 'employees.last_name', 'employees.position', 'employees.the_table_id').where('the_table.id', x);
+        return knex.from('employees').innerJoin('restaurants', 'employees.restaurants_id', 'restaurants.id').select('employees.id', 'employees.first_name', 'employees.last_name', 'employees.position', 'employees.restaurants_id').where('restaurants.id', "'"+x+"'");
     },
 
     addWorker: function(restId, first, last, role) {
         return knex('employees').insert({
-            'the_table_id': restId.trim(),
+            'food_id': restId.trim(),
             'first_name': first.trim(),
             'last_name': last.trim(),
             'position': role.trim()
@@ -75,25 +73,24 @@ module.exports = {
     },
 
     outputReviews: function (x) {
-        return knex.from('reviews').innerJoin('the_table', 'reviews.the_table_id', 'the_table.id').select('reviews.id', 'reviews.review_title', 'reviews.review_rating', 'reviews.review_content', 'reviews.author_handle',  'reviews.the_table_id').where('the_table.id', x);
+      console.log(x);
+        return knex.from('reviews').innerJoin('restaurants', 'reviews.restaurants_id', 'restaurants.id').select('reviews.id', 'reviews.stars', 'reviews.review', 'reviews.users_name',  'reviews.restaurants_id').where('restaurants.id', x.toString());
     },
 
     addReview: function(restId, title, rating, handle, content) {
         return knex('reviews').insert({
-            'the_table_id': restId.trim(),
-            'review_title': title.trim(),
-            'review_rating': rating.trim(),
-            'author_handle': handle.trim(),
-            'review_content': content.trim()
+            'restaurants_id': restId.trim(),
+            'stars': rating.trim(),
+            'users_name': handle.trim(),
+            'review': content.trim()
         });
     },
 
     editReview: function(x, title, rating, handle, content) {
         return knex('reviews').where('id', x).update({
-            'review_title': title.trim(),
-            'review_rating': rating.trim(),
-            'author_handle': handle.trim(),
-            'review_content': content.trim()
+            'stars': rating.trim(),
+            'users_name': handle.trim(),
+            'review': content.trim()
         });
     },
 
